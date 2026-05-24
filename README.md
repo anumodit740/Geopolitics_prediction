@@ -2,7 +2,7 @@
 
 **Predicting country-level stability risk using real-world socioeconomic data.**
 
-> A fully modular, production-grade ML system that quantifies country stability through proven socioeconomic indicators. Built with the rigor of a consulting firm. Designed to be understood, maintained, and extended by teams.
+> A fully modular, production-grade ML system that quantifies country stability through proven socioeconomic indicators. Built with the rigor of a consulting firm. Designed to be understood, maintained, and extended.
 
 ---
 
@@ -17,6 +17,28 @@ This isn't a notebook. It's a complete, production-ready system that:
 - ✅ Classifies each nation into one of **3 risk categories**
 - ✅ Includes an interactive Streamlit dashboard for scenario analysis
 - ✅ Maintains explainability at every step
+
+---
+
+## 🎬 Live Demo
+
+<div align="center">
+
+### 🚀 **Try the Interactive Dashboard**
+
+[![Streamlit App](https://img.shields.io/badge/🎨%20Streamlit%20App-Live%20Demo-brightgreen?style=for-the-badge&logo=streamlit)](https://geopoliticsprediction-4n86qou6o6gfg2hcdtyt44.streamlit.app/)
+
+**Explore real-time country stability predictions with an interactive interface:**
+
+- 🎚️ **Adjust Indicators** — Use sliders to modify GDP, birth rate, healthcare spending, education enrollment
+- 📊 **Instant Predictions** — See stability risk category update in real time
+- 📈 **Feature Impact Visualization** — Understand which indicators drive predictions
+- 💾 **Export Results** — Download predictions as CSV for further analysis
+- 🌐 **Scenario Analysis** — Test hypothetical country profiles
+
+**✨ No installation required — click above to launch!**
+
+</div>
 
 ---
 
@@ -279,7 +301,7 @@ With ~63 samples per class, random splits create misleading performance estimate
 
 ### Why This Structure?
 
-Designed for **teams**. Each module is testable independently. New data? Drop it in `data/raw/`. Want to add features? Edit `feature_engineering.py`. Need a different model? Modify `model_training.py`. No dependencies scattered across notebooks.
+Designed for **teams**. Each module is testable independently. New data? Drop it in `data/raw/`. Want to add features? Edit `feature_engineering.py`. Need a different model? Modify `model_training.py`. No gatekeeping.
 
 ---
 
@@ -295,4 +317,3 @@ With more time, I'd tackle:
 - **API endpoint** → REST service for real-time predictions
 
 ---
-
