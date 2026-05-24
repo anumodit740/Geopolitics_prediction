@@ -296,17 +296,3 @@ With more time, I'd tackle:
 
 ---
 
-## 👤 Who This Is For
-
-**Analytics consulting firms** building advisory services around country stability:
-- Fractal Analytics, Tiger Analytics, Tredence, Deloitte Insights
-- International development organizations
-- Risk management teams at multinational corporations
-
-**Data science role interviews** — start here:
-1. **`main.py`** — Understand the full workflow
-2. **`src/feature_engineering.py`** — See domain thinking in code
-3. **`src/model_training.py`** — Observe cross-validation + model selection
-4. **`reports/`** — Review output metrics and visualizations
-
-------
