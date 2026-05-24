@@ -309,20 +309,4 @@ With more time, I'd tackle:
 3. **`src/model_training.py`** — Observe cross-validation + model selection
 4. **`reports/`** — Review output metrics and visualizations
 
----
-
-## 📬 Feedback & Questions
-
-Built by **Anumol** — I'd love to hear thoughts on modeling choices, feature engineering approaches, or potential applications.
-
-Feel free to open an issue or reach out!
-
----
-
-<div align="center">
-
-**⭐ If this repo was helpful, please consider giving it a star!**
-
-Made with ❤️ for the data science community
-
-</div>
+------
