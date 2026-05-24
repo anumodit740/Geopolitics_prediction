@@ -1,0 +1,19 @@
+Classification Report: XGBoost
+=======================================================
+Project: Global Country Stability Intelligence System
+Test samples: 38
+=======================================================
+
+              precision    recall  f1-score   support
+
+      Stable       0.80      1.00      0.89        12
+       Watch       0.88      0.54      0.67        13
+     At-Risk       0.80      0.92      0.86        13
+
+    accuracy                           0.82        38
+   macro avg       0.83      0.82      0.80        38
+weighted avg       0.83      0.82      0.80        38
+
+
+Note: 'Stable' = low risk, 'At-Risk' = high risk.
+Macro F1 is the primary evaluation metric.

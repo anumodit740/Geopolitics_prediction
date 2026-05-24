@@ -1,0 +1,722 @@
+2026-05-24 14:01:19 | INFO     | StabilityIntelligence | Test log
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | STARTING DATA PREPROCESSING PIPELINE
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Dataset loaded successfully from: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\data\raw\world-data-2023.csv
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence |   Shape: 195 rows × 35 columns
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Columns: ['Country', 'Density\n(P/Km2)', 'Abbreviation', 'Agricultural Land( %)', 'Land Area(Km2)', 'Armed Forces size', 'Birth Rate', 'Calling Code', 'Capital/Major City', 'Co2-Emissions', 'CPI', 'CPI Change (%)', 'Currency-Code', 'Fertility Rate', 'Forested Area (%)', 'Gasoline Price', 'GDP', 'Gross primary education enrollment (%)', 'Gross tertiary education enrollment (%)', 'Infant mortality', 'Largest city', 'Life expectancy', 'Maternal mortality ratio', 'Minimum wage', 'Official language', 'Out of pocket health expenditure', 'Physicians per thousand', 'Population', 'Population: Labor force participation (%)', 'Tax revenue (%)', 'Total tax rate', 'Unemployment rate', 'Urban_population', 'Latitude', 'Longitude']
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Dropped 6 ID/non-predictive columns: ['Abbreviation', 'Calling Code', 'Capital/Major City', 'Currency-Code', 'Largest city', 'Official language']
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Dropped 5 near-empty country rows: ['Palestinian National Authority', 'Vatican City', 'Nauru', 'North Macedonia', 'Eswatini']
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Shape after cleanup: (190, 29) (removed 5 rows, 6 columns)
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Renamed 28 columns via config map
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Renames applied: {'Density\n(P/Km2)': 'Density_per_km2', 'Agricultural Land( %)': 'Agricultural_Land_pct', 'Land Area(Km2)': 'Land_Area_km2', 'Armed Forces size': 'Armed_Forces', 'Co2-Emissions': 'CO2_Emissions', 'CPI Change (%)': 'CPI_Change_pct', 'Fertility Rate': 'Fertility_Rate', 'Forested Area (%)': 'Forested_Area_pct', 'Gasoline Price': 'Gasoline_Price', 'Gross primary education enrollment (%)': 'Primary_Education_pct', 'Gross tertiary education enrollment (%)': 'Tertiary_Education_pct', 'Infant mortality': 'Infant_Mortality', 'Life expectancy': 'Life_Expectancy', 'Maternal mortality ratio': 'Maternal_Mortality', 'Minimum wage': 'Minimum_Wage', 'Out of pocket health expenditure': 'OOP_Health_Expenditure_pct', 'Physicians per thousand': 'Physicians_per_1000', 'Population: Labor force participation (%)': 'Labor_Participation_pct', 'Tax revenue (%)': 'Tax_Revenue_pct', 'Total tax rate': 'Total_Tax_Rate_pct', 'Unemployment rate': 'Unemployment_Rate_pct', 'Urban_population': 'Urban_Population', 'Birth Rate': 'Birth_Rate', 'GDP': 'GDP', 'CPI': 'CPI', 'Population': 'Population', 'Latitude': 'Latitude', 'Longitude': 'Longitude'}
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Final column names (29): ['Country', 'Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate', 'CO2_Emissions', 'CPI', 'CPI_Change_pct', 'Fertility_Rate', 'Forested_Area_pct', 'Gasoline_Price', 'GDP', 'Primary_Education_pct', 'Tertiary_Education_pct', 'Infant_Mortality', 'Life_Expectancy', 'Maternal_Mortality', 'Minimum_Wage', 'OOP_Health_Expenditure_pct', 'Physicians_per_1000', 'Population', 'Labor_Participation_pct', 'Tax_Revenue_pct', 'Total_Tax_Rate_pct', 'Unemployment_Rate_pct', 'Urban_Population', 'Latitude', 'Longitude']
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Agricultural_Land_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: CPI_Change_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Forested_Area_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Primary_Education_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Tertiary_Education_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: OOP_Health_Expenditure_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Labor_Participation_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Tax_Revenue_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Total_Tax_Rate_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Unemployment_Rate_pct
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned currency column: GDP
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned currency column: Gasoline_Price
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned currency column: Minimum_Wage
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Density_per_km2
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Land_Area_km2
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Armed_Forces
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: CO2_Emissions
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Population
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Urban_Population
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Cleaned CPI column: CPI
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Converted 20 columns from string → numeric
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Created 4 missingness flags: ['Minimum_Wage_is_missing', 'Tax_Revenue_pct_is_missing', 'Armed_Forces_is_missing', 'Gasoline_Price_is_missing']
+2026-05-24 14:07:50 | WARNING  | StabilityIntelligence | Columns with >10% missing values:
+         column  missing_pct
+   Minimum_Wage        21.05
+Tax_Revenue_pct        11.58
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Overall missing: 193/6270 cells (3.08%)
+2026-05-24 14:07:50 | WARNING  | StabilityIntelligence | Target column 'stability_label' not found — returning cleaned DataFrame without train/test split. Run feature_engineering.py first to create the target.
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Feature type identification:
+  Numerical features  : 32
+  Categorical features: 0
+  Excluded columns    : {'Country', 'stability_label'}
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Numerical: ['Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate', 'CO2_Emissions', 'CPI', 'CPI_Change_pct', 'Fertility_Rate', 'Forested_Area_pct', 'Gasoline_Price', 'GDP', 'Primary_Education_pct', 'Tertiary_Education_pct', 'Infant_Mortality', 'Life_Expectancy', 'Maternal_Mortality', 'Minimum_Wage', 'OOP_Health_Expenditure_pct', 'Physicians_per_1000', 'Population', 'Labor_Participation_pct', 'Tax_Revenue_pct', 'Total_Tax_Rate_pct', 'Unemployment_Rate_pct', 'Urban_Population', 'Latitude', 'Longitude', 'Minimum_Wage_is_missing', 'Tax_Revenue_pct_is_missing', 'Armed_Forces_is_missing', 'Gasoline_Price_is_missing']
+2026-05-24 14:07:50 | DEBUG    | StabilityIntelligence |   Categorical: []
+2026-05-24 14:07:50 | INFO     | StabilityIntelligence | Preprocessing pipeline built (UNFITTED):
+  Numerical features  (32): ['Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate']...
+  Categorical features (0): []
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | STARTING DATA PREPROCESSING PIPELINE
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Dataset loaded successfully from: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\data\raw\world-data-2023.csv
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence |   Shape: 195 rows × 35 columns
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Columns: ['Country', 'Density\n(P/Km2)', 'Abbreviation', 'Agricultural Land( %)', 'Land Area(Km2)', 'Armed Forces size', 'Birth Rate', 'Calling Code', 'Capital/Major City', 'Co2-Emissions', 'CPI', 'CPI Change (%)', 'Currency-Code', 'Fertility Rate', 'Forested Area (%)', 'Gasoline Price', 'GDP', 'Gross primary education enrollment (%)', 'Gross tertiary education enrollment (%)', 'Infant mortality', 'Largest city', 'Life expectancy', 'Maternal mortality ratio', 'Minimum wage', 'Official language', 'Out of pocket health expenditure', 'Physicians per thousand', 'Population', 'Population: Labor force participation (%)', 'Tax revenue (%)', 'Total tax rate', 'Unemployment rate', 'Urban_population', 'Latitude', 'Longitude']
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Dropped 6 ID/non-predictive columns: ['Abbreviation', 'Calling Code', 'Capital/Major City', 'Currency-Code', 'Largest city', 'Official language']
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Dropped 5 near-empty country rows: ['Palestinian National Authority', 'Vatican City', 'Nauru', 'North Macedonia', 'Eswatini']
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Shape after cleanup: (190, 29) (removed 5 rows, 6 columns)
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Renamed 28 columns via config map
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Renames applied: {'Density\n(P/Km2)': 'Density_per_km2', 'Agricultural Land( %)': 'Agricultural_Land_pct', 'Land Area(Km2)': 'Land_Area_km2', 'Armed Forces size': 'Armed_Forces', 'Co2-Emissions': 'CO2_Emissions', 'CPI Change (%)': 'CPI_Change_pct', 'Fertility Rate': 'Fertility_Rate', 'Forested Area (%)': 'Forested_Area_pct', 'Gasoline Price': 'Gasoline_Price', 'Gross primary education enrollment (%)': 'Primary_Education_pct', 'Gross tertiary education enrollment (%)': 'Tertiary_Education_pct', 'Infant mortality': 'Infant_Mortality', 'Life expectancy': 'Life_Expectancy', 'Maternal mortality ratio': 'Maternal_Mortality', 'Minimum wage': 'Minimum_Wage', 'Out of pocket health expenditure': 'OOP_Health_Expenditure_pct', 'Physicians per thousand': 'Physicians_per_1000', 'Population: Labor force participation (%)': 'Labor_Participation_pct', 'Tax revenue (%)': 'Tax_Revenue_pct', 'Total tax rate': 'Total_Tax_Rate_pct', 'Unemployment rate': 'Unemployment_Rate_pct', 'Urban_population': 'Urban_Population', 'Birth Rate': 'Birth_Rate', 'GDP': 'GDP', 'CPI': 'CPI', 'Population': 'Population', 'Latitude': 'Latitude', 'Longitude': 'Longitude'}
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Final column names (29): ['Country', 'Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate', 'CO2_Emissions', 'CPI', 'CPI_Change_pct', 'Fertility_Rate', 'Forested_Area_pct', 'Gasoline_Price', 'GDP', 'Primary_Education_pct', 'Tertiary_Education_pct', 'Infant_Mortality', 'Life_Expectancy', 'Maternal_Mortality', 'Minimum_Wage', 'OOP_Health_Expenditure_pct', 'Physicians_per_1000', 'Population', 'Labor_Participation_pct', 'Tax_Revenue_pct', 'Total_Tax_Rate_pct', 'Unemployment_Rate_pct', 'Urban_Population', 'Latitude', 'Longitude']
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Agricultural_Land_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: CPI_Change_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Forested_Area_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Primary_Education_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Tertiary_Education_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: OOP_Health_Expenditure_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Labor_Participation_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Tax_Revenue_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Total_Tax_Rate_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Unemployment_Rate_pct
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned currency column: GDP
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned currency column: Gasoline_Price
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned currency column: Minimum_Wage
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Density_per_km2
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Land_Area_km2
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Armed_Forces
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: CO2_Emissions
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Population
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Urban_Population
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Cleaned CPI column: CPI
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Converted 20 columns from string → numeric
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Created 4 missingness flags: ['Minimum_Wage_is_missing', 'Tax_Revenue_pct_is_missing', 'Armed_Forces_is_missing', 'Gasoline_Price_is_missing']
+2026-05-24 14:08:23 | WARNING  | StabilityIntelligence | Columns with >10% missing values:
+         column  missing_pct
+   Minimum_Wage        21.05
+Tax_Revenue_pct        11.58
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Overall missing: 193/6270 cells (3.08%)
+2026-05-24 14:08:23 | WARNING  | StabilityIntelligence | Target column 'stability_label' not found — returning cleaned DataFrame without train/test split. Run feature_engineering.py first to create the target.
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Feature type identification:
+  Numerical features  : 32
+  Categorical features: 0
+  Excluded columns    : {'Country', 'stability_label'}
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Numerical: ['Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate', 'CO2_Emissions', 'CPI', 'CPI_Change_pct', 'Fertility_Rate', 'Forested_Area_pct', 'Gasoline_Price', 'GDP', 'Primary_Education_pct', 'Tertiary_Education_pct', 'Infant_Mortality', 'Life_Expectancy', 'Maternal_Mortality', 'Minimum_Wage', 'OOP_Health_Expenditure_pct', 'Physicians_per_1000', 'Population', 'Labor_Participation_pct', 'Tax_Revenue_pct', 'Total_Tax_Rate_pct', 'Unemployment_Rate_pct', 'Urban_Population', 'Latitude', 'Longitude', 'Minimum_Wage_is_missing', 'Tax_Revenue_pct_is_missing', 'Armed_Forces_is_missing', 'Gasoline_Price_is_missing']
+2026-05-24 14:08:23 | DEBUG    | StabilityIntelligence |   Categorical: []
+2026-05-24 14:08:23 | INFO     | StabilityIntelligence | Preprocessing pipeline built (UNFITTED):
+  Numerical features  (32): ['Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate']...
+  Categorical features (0): []
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | STARTING FEATURE ENGINEERING PIPELINE
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Economic features created (6): ['GDP_per_Capita', 'Log_GDP', 'Log_Population', 'Economic_Stress_Index', 'Inflation_Unemployment_Pressure', 'Tax_Burden_Index']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Healthcare features created (4): ['Healthcare_Stability_Score', 'Mortality_Pressure_Index', 'Physician_Access_Score', 'Healthcare_Access_Gap']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Education/Workforce features created (4): ['Human_Capital_Index', 'Workforce_Stability_Score', 'Education_Pipeline', 'Education_Gap_Index']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Demographic features created (5): ['Urbanization_Rate', 'Population_Pressure_Index', 'Dependency_Ratio_Proxy', 'Military_Burden', 'Abs_Latitude']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Environment features created (5): ['CO2_per_Capita', 'CO2_per_GDP', 'Environmental_Pressure_Index', 'Resource_Land_Balance', 'Fuel_Cost_Pressure']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Total engineered features created: 24
+  ['Abs_Latitude', 'CO2_per_Capita', 'CO2_per_GDP', 'Dependency_Ratio_Proxy', 'Economic_Stress_Index', 'Education_Gap_Index', 'Education_Pipeline', 'Environmental_Pressure_Index', 'Fuel_Cost_Pressure', 'GDP_per_Capita', 'Healthcare_Access_Gap', 'Healthcare_Stability_Score', 'Human_Capital_Index', 'Inflation_Unemployment_Pressure', 'Log_GDP', 'Log_Population', 'Military_Burden', 'Mortality_Pressure_Index', 'Physician_Access_Score', 'Population_Pressure_Index', 'Resource_Land_Balance', 'Tax_Burden_Index', 'Urbanization_Rate', 'Workforce_Stability_Score']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Stability score components:
+  Positive signals (5): ['Life_Expectancy', 'Physicians_per_1000', 'Primary_Education_pct', 'Tertiary_Education_pct', 'GDP_per_Capita']
+  Negative signals (2): ['Infant_Mortality', 'Maternal_Mortality']
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + Life_Expectancy: mean=72.28, z-range=[-2.60, 1.75]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + Physicians_per_1000: mean=1.84, z-range=[-1.09, 3.91]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + Primary_Education_pct: mean=102.47, z-range=[-6.01, 3.04]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + Tertiary_Education_pct: mean=37.96, z-range=[-1.27, 3.37]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + GDP_per_Capita: mean=15821.67, z-range=[-0.61, 6.63]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   - Infant_Mortality: mean=21.33, z-range=[-1.02, 3.23]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   - Maternal_Mortality: mean=160.39, z-range=[-0.68, 4.24]
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Stability score created: min=-5.034, max=5.673, mean=0.010
+2026-05-24 14:21:00 | WARNING  | StabilityIntelligence | Dropping 1 rows with NaN stability_score before creating target labels.
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Target column 'stability_label' created:
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence |   Class 0 (Stable): 63 countries (33.3%)
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence |   Class 1 (Watch): 63 countries (33.3%)
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence |   Class 2 (At-Risk): 63 countries (33.3%)
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Target column 'stability_label' is ready.
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Final DataFrame shape: (189, 59)
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | FEATURE ENGINEERING PIPELINE COMPLETE
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | STARTING FEATURE ENGINEERING PIPELINE
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Economic features created (6): ['GDP_per_Capita', 'Log_GDP', 'Log_Population', 'Economic_Stress_Index', 'Inflation_Unemployment_Pressure', 'Tax_Burden_Index']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Healthcare features created (4): ['Healthcare_Stability_Score', 'Mortality_Pressure_Index', 'Physician_Access_Score', 'Healthcare_Access_Gap']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Education/Workforce features created (4): ['Human_Capital_Index', 'Workforce_Stability_Score', 'Education_Pipeline', 'Education_Gap_Index']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Demographic features created (5): ['Urbanization_Rate', 'Population_Pressure_Index', 'Dependency_Ratio_Proxy', 'Military_Burden', 'Abs_Latitude']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Environment features created (5): ['CO2_per_Capita', 'CO2_per_GDP', 'Environmental_Pressure_Index', 'Resource_Land_Balance', 'Fuel_Cost_Pressure']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Total engineered features created: 24
+  ['Abs_Latitude', 'CO2_per_Capita', 'CO2_per_GDP', 'Dependency_Ratio_Proxy', 'Economic_Stress_Index', 'Education_Gap_Index', 'Education_Pipeline', 'Environmental_Pressure_Index', 'Fuel_Cost_Pressure', 'GDP_per_Capita', 'Healthcare_Access_Gap', 'Healthcare_Stability_Score', 'Human_Capital_Index', 'Inflation_Unemployment_Pressure', 'Log_GDP', 'Log_Population', 'Military_Burden', 'Mortality_Pressure_Index', 'Physician_Access_Score', 'Population_Pressure_Index', 'Resource_Land_Balance', 'Tax_Burden_Index', 'Urbanization_Rate', 'Workforce_Stability_Score']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Stability score components:
+  Positive signals (5): ['Life_Expectancy', 'Physicians_per_1000', 'Primary_Education_pct', 'Tertiary_Education_pct', 'GDP_per_Capita']
+  Negative signals (2): ['Infant_Mortality', 'Maternal_Mortality']
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + Life_Expectancy: mean=72.28, z-range=[-2.60, 1.75]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + Physicians_per_1000: mean=1.84, z-range=[-1.09, 3.91]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + Primary_Education_pct: mean=102.47, z-range=[-6.01, 3.04]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + Tertiary_Education_pct: mean=37.96, z-range=[-1.27, 3.37]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   + GDP_per_Capita: mean=15821.67, z-range=[-0.61, 6.63]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   - Infant_Mortality: mean=21.33, z-range=[-1.02, 3.23]
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence |   - Maternal_Mortality: mean=160.39, z-range=[-0.68, 4.24]
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Stability score created: min=-5.034, max=5.673, mean=0.010
+2026-05-24 14:21:00 | WARNING  | StabilityIntelligence | Dropping 1 rows with NaN stability_score before creating target labels.
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Target column 'stability_label' created:
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence |   Class 0 (Stable): 63 countries (33.3%)
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence |   Class 1 (Watch): 63 countries (33.3%)
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence |   Class 2 (At-Risk): 63 countries (33.3%)
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Target column 'stability_label' is ready.
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence | Leaky columns (to exclude from features): ['Life_Expectancy', 'Physicians_per_1000', 'Primary_Education_pct', 'Tertiary_Education_pct', 'Infant_Mortality', 'Maternal_Mortality', 'stability_score', 'Healthcare_Stability_Score', 'Mortality_Pressure_Index', 'Physician_Access_Score']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Dropped 11 leaky/non-feature columns: ['Life_Expectancy', 'Physicians_per_1000', 'Primary_Education_pct', 'Tertiary_Education_pct', 'Infant_Mortality', 'Maternal_Mortality', 'stability_score', 'Healthcare_Stability_Score', 'Mortality_Pressure_Index', 'Physician_Access_Score', 'Country']
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | Final DataFrame shape: (189, 48)
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | FEATURE ENGINEERING PIPELINE COMPLETE
+2026-05-24 14:21:00 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:21:00 | DEBUG    | StabilityIntelligence | Leaky columns (to exclude from features): ['Life_Expectancy', 'Physicians_per_1000', 'Primary_Education_pct', 'Tertiary_Education_pct', 'Infant_Mortality', 'Maternal_Mortality', 'stability_score', 'Healthcare_Stability_Score', 'Mortality_Pressure_Index', 'Physician_Access_Score']
+2026-05-24 14:30:24 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:30:24 | INFO     | StabilityIntelligence | FULL TRAINING PIPELINE
+2026-05-24 14:30:24 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:30:24 | INFO     | StabilityIntelligence | Preprocessing pipeline built (UNFITTED):
+  Numerical features  (47): ['Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate']...
+  Categorical features (0): []
+2026-05-24 14:30:24 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:30:24 | INFO     | StabilityIntelligence | STARTING MODEL TRAINING
+2026-05-24 14:30:24 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:30:24 | INFO     | StabilityIntelligence | Training set: 151 samples, 47 features
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | FULL TRAINING PIPELINE
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | Preprocessing pipeline built (UNFITTED):
+  Numerical features  (47): ['Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate']...
+  Categorical features (0): []
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | STARTING MODEL TRAINING
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | Training set: 151 samples, 47 features
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | Initialized LogisticRegression (interpretable baseline)
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | Initialized RandomForestClassifier (nonlinear benchmark)
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | Initialized XGBClassifier (primary production model)
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | Total models initialized: 3 -> ['LogisticRegression', 'RandomForest', 'XGBoost']
+2026-05-24 14:31:16 | DEBUG    | StabilityIntelligence | Built pipeline: preprocessor -> LogisticRegression
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | Training LogisticRegression...
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence |   LogisticRegression trained successfully in 0.06s
+2026-05-24 14:31:16 | DEBUG    | StabilityIntelligence | Built pipeline: preprocessor -> RandomForestClassifier
+2026-05-24 14:31:16 | INFO     | StabilityIntelligence | Training RandomForest...
+2026-05-24 14:31:17 | INFO     | StabilityIntelligence |   RandomForest trained successfully in 0.42s
+2026-05-24 14:31:17 | DEBUG    | StabilityIntelligence | Built pipeline: preprocessor -> XGBClassifier
+2026-05-24 14:31:17 | INFO     | StabilityIntelligence | Training XGBoost...
+2026-05-24 14:31:17 | DEBUG    | StabilityIntelligence | Sample weights computed: min=0.987, max=1.007, shape=(151,)
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence |   XGBoost trained successfully in 2.02s
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Training complete: 3/3 models trained successfully
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | CROSS-VALIDATION FOR ALL MODELS
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Cross-validating LogisticRegression with 5-fold stratified CV...
+2026-05-24 14:31:19 | ERROR    | StabilityIntelligence |   Cross-validation failed for LogisticRegression: got an unexpected keyword argument 'fit_params'
+2026-05-24 14:31:19 | WARNING  | StabilityIntelligence | CV failed for LogisticRegression: got an unexpected keyword argument 'fit_params'
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Cross-validating RandomForest with 5-fold stratified CV...
+2026-05-24 14:31:19 | ERROR    | StabilityIntelligence |   Cross-validation failed for RandomForest: got an unexpected keyword argument 'fit_params'
+2026-05-24 14:31:19 | WARNING  | StabilityIntelligence | CV failed for RandomForest: got an unexpected keyword argument 'fit_params'
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Cross-validating XGBoost with 5-fold stratified CV...
+2026-05-24 14:31:19 | DEBUG    | StabilityIntelligence | Sample weights computed: min=0.987, max=1.007, shape=(151,)
+2026-05-24 14:31:19 | ERROR    | StabilityIntelligence |   Cross-validation failed for XGBoost: got an unexpected keyword argument 'fit_params'
+2026-05-24 14:31:19 | WARNING  | StabilityIntelligence | CV failed for XGBoost: got an unexpected keyword argument 'fit_params'
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Model comparison table:
+Empty DataFrame
+Columns: []
+Index: []
+2026-05-24 14:31:19 | ERROR    | StabilityIntelligence | No valid CV results found. Cannot select best model.
+2026-05-24 14:31:19 | WARNING  | StabilityIntelligence | Falling back to first model: LogisticRegression
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Best model selected: LogisticRegression (Macro F1 = -1.0000 +/- inf)
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Model 'LogisticRegression' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\best_model.joblib
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Model 'LogisticRegression' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\logisticregression_pipeline.joblib
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Model 'RandomForest' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\randomforest_pipeline.joblib
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Model 'XGBoost' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\xgboost_pipeline.joblib
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Feature list (47 features) saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\feature_list.joblib
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | Full training pipeline completed in 2.60s
+2026-05-24 14:31:19 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | FULL TRAINING PIPELINE
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | Preprocessing pipeline built (UNFITTED):
+  Numerical features  (47): ['Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate']...
+  Categorical features (0): []
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | STARTING MODEL TRAINING
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | Training set: 151 samples, 47 features
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | Initialized LogisticRegression (interpretable baseline)
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | Initialized RandomForestClassifier (nonlinear benchmark)
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | Initialized XGBClassifier (primary production model)
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | Total models initialized: 3 -> ['LogisticRegression', 'RandomForest', 'XGBoost']
+2026-05-24 14:32:16 | DEBUG    | StabilityIntelligence | Built pipeline: preprocessor -> LogisticRegression
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | Training LogisticRegression...
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence |   LogisticRegression trained successfully in 0.02s
+2026-05-24 14:32:16 | DEBUG    | StabilityIntelligence | Built pipeline: preprocessor -> RandomForestClassifier
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | Training RandomForest...
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence |   RandomForest trained successfully in 0.34s
+2026-05-24 14:32:16 | DEBUG    | StabilityIntelligence | Built pipeline: preprocessor -> XGBClassifier
+2026-05-24 14:32:16 | INFO     | StabilityIntelligence | Training XGBoost...
+2026-05-24 14:32:16 | DEBUG    | StabilityIntelligence | Sample weights computed: min=0.987, max=1.007, shape=(151,)
+2026-05-24 14:32:18 | INFO     | StabilityIntelligence |   XGBoost trained successfully in 1.67s
+2026-05-24 14:32:18 | INFO     | StabilityIntelligence | Training complete: 3/3 models trained successfully
+2026-05-24 14:32:18 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:32:18 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:32:18 | INFO     | StabilityIntelligence | CROSS-VALIDATION FOR ALL MODELS
+2026-05-24 14:32:18 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:32:18 | INFO     | StabilityIntelligence | Cross-validating LogisticRegression with 5-fold stratified CV...
+2026-05-24 14:32:22 | INFO     | StabilityIntelligence |   LogisticRegression CV Results (5-fold):
+2026-05-24 14:32:22 | INFO     | StabilityIntelligence |     accuracy            : 0.7882 (+/- 0.0577)
+2026-05-24 14:32:22 | INFO     | StabilityIntelligence |     f1_macro            : 0.7889 (+/- 0.0559)
+2026-05-24 14:32:22 | INFO     | StabilityIntelligence |     f1_weighted         : 0.7893 (+/- 0.0557)
+2026-05-24 14:32:22 | INFO     | StabilityIntelligence |     recall_macro        : 0.7873 (+/- 0.0579)
+2026-05-24 14:32:22 | INFO     | StabilityIntelligence | Cross-validating RandomForest with 5-fold stratified CV...
+2026-05-24 14:32:25 | INFO     | StabilityIntelligence |   RandomForest CV Results (5-fold):
+2026-05-24 14:32:25 | INFO     | StabilityIntelligence |     accuracy            : 0.8015 (+/- 0.0462)
+2026-05-24 14:32:25 | INFO     | StabilityIntelligence |     f1_macro            : 0.8036 (+/- 0.0462)
+2026-05-24 14:32:25 | INFO     | StabilityIntelligence |     f1_weighted         : 0.8045 (+/- 0.0456)
+2026-05-24 14:32:25 | INFO     | StabilityIntelligence |     recall_macro        : 0.8006 (+/- 0.0467)
+2026-05-24 14:32:25 | INFO     | StabilityIntelligence | Cross-validating XGBoost with 5-fold stratified CV...
+2026-05-24 14:32:25 | DEBUG    | StabilityIntelligence | Sample weights computed: min=0.987, max=1.007, shape=(151,)
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence |   XGBoost CV Results (5-fold):
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence |     accuracy            : 0.8080 (+/- 0.0441)
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence |     f1_macro            : 0.8086 (+/- 0.0420)
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence |     f1_weighted         : 0.8093 (+/- 0.0419)
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence |     recall_macro        : 0.8073 (+/- 0.0441)
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence | Model comparison table:
+             model  accuracy_mean  accuracy_std  f1_macro_mean  f1_macro_std  f1_weighted_mean  f1_weighted_std  recall_macro_mean  recall_macro_std
+           XGBoost       0.807957      0.044102       0.808587      0.041985          0.809260         0.041944           0.807273          0.044147
+      RandomForest       0.801505      0.046162       0.803591      0.046214          0.804487         0.045597           0.800606          0.046726
+LogisticRegression       0.788172      0.057677       0.788938      0.055867          0.789344         0.055738           0.787273          0.057922
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence | Best model selected: XGBoost (Macro F1 = 0.8086 +/- 0.0420)
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence | Model 'XGBoost' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\best_model.joblib
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence | Model 'LogisticRegression' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\logisticregression_pipeline.joblib
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence | Model 'RandomForest' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\randomforest_pipeline.joblib
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence | Model 'XGBoost' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\xgboost_pipeline.joblib
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence | Feature list (47 features) saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\feature_list.joblib
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence | Full training pipeline completed in 12.16s
+2026-05-24 14:32:28 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:41:41 | INFO     | StabilityIntelligence | Model loaded from: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\logisticregression_pipeline.joblib
+2026-05-24 14:41:41 | INFO     | StabilityIntelligence | Model loaded from: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\randomforest_pipeline.joblib
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | Model loaded from: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\xgboost_pipeline.joblib
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | STARTING FULL EVALUATION PIPELINE
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | EVALUATING ALL MODELS ON TEST SET
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | Evaluating LogisticRegression on test set (38 samples)...
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |   LogisticRegression Test Results:
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     accuracy            : 0.7895
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     macro_precision     : 0.7878
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     macro_recall        : 0.7927
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     macro_f1            : 0.7799
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     weighted_f1         : 0.7781
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     at_risk_recall      : 0.9231
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | Evaluating RandomForest on test set (38 samples)...
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |   RandomForest Test Results:
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     accuracy            : 0.7895
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     macro_precision     : 0.7878
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     macro_recall        : 0.7927
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     macro_f1            : 0.7799
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     weighted_f1         : 0.7781
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     at_risk_recall      : 0.9231
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | Evaluating XGBoost on test set (38 samples)...
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |   XGBoost Test Results:
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     accuracy            : 0.8158
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     macro_precision     : 0.8250
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     macro_recall        : 0.8205
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     macro_f1            : 0.8042
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     weighted_f1         : 0.8020
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence |     at_risk_recall      : 0.9231
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | 
+Model Comparison:
+             model  accuracy  macro_precision  macro_recall  macro_f1  weighted_f1  at_risk_recall
+           XGBoost  0.815789         0.825000      0.820513  0.804233     0.802005        0.923077
+LogisticRegression  0.789474         0.787831      0.792735  0.779887     0.778143        0.923077
+      RandomForest  0.789474         0.787831      0.792735  0.779887     0.778143        0.923077
+2026-05-24 14:41:42 | INFO     | StabilityIntelligence | Classification report saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\classification_report_logisticregression.txt
+2026-05-24 14:41:43 | INFO     | StabilityIntelligence | Confusion matrix saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\confusion_matrix_logisticregression.png
+2026-05-24 14:41:43 | INFO     | StabilityIntelligence | Extracting feature importance for LogisticRegression...
+2026-05-24 14:41:43 | DEBUG    | StabilityIntelligence |   Extracted coef_ (47 features)
+2026-05-24 14:41:43 | INFO     | StabilityIntelligence |   Top 15 features for LogisticRegression:
+                  feature  importance
+       Education_Pipeline    0.702043
+      Human_Capital_Index    0.598316
+      Education_Gap_Index    0.544460
+        Forested_Area_pct    0.513684
+           GDP_per_Capita    0.451266
+    Agricultural_Land_pct    0.448673
+            CO2_Emissions    0.428430
+          Density_per_km2    0.424805
+          Tax_Revenue_pct    0.422163
+  Labor_Participation_pct    0.415852
+    Healthcare_Access_Gap    0.409375
+Gasoline_Price_is_missing    0.388228
+       Total_Tax_Rate_pct    0.368251
+    Resource_Land_Balance    0.346813
+  Armed_Forces_is_missing    0.342332
+2026-05-24 14:41:43 | INFO     | StabilityIntelligence | Feature importance plot saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\feature_importance_logisticregression.png
+2026-05-24 14:41:43 | INFO     | StabilityIntelligence | Classification report saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\classification_report_randomforest.txt
+2026-05-24 14:41:43 | INFO     | StabilityIntelligence | Confusion matrix saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\confusion_matrix_randomforest.png
+2026-05-24 14:41:43 | INFO     | StabilityIntelligence | Extracting feature importance for RandomForest...
+2026-05-24 14:41:43 | DEBUG    | StabilityIntelligence |   Extracted feature_importances_ (47 features)
+2026-05-24 14:41:43 | INFO     | StabilityIntelligence |   Top 15 features for RandomForest:
+                  feature  importance
+       Education_Pipeline    0.125628
+               Birth_Rate    0.105705
+Population_Pressure_Index    0.083606
+           GDP_per_Capita    0.081204
+           CO2_per_Capita    0.071137
+           Fertility_Rate    0.068031
+    Healthcare_Access_Gap    0.065740
+   Dependency_Ratio_Proxy    0.052137
+      Education_Gap_Index    0.048074
+Workforce_Stability_Score    0.031399
+                 Latitude    0.025931
+             Abs_Latitude    0.022197
+             Minimum_Wage    0.018916
+        Urbanization_Rate    0.016797
+      Human_Capital_Index    0.014943
+2026-05-24 14:41:44 | INFO     | StabilityIntelligence | Feature importance plot saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\feature_importance_randomforest.png
+2026-05-24 14:41:44 | INFO     | StabilityIntelligence | Classification report saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\classification_report_xgboost.txt
+2026-05-24 14:41:44 | INFO     | StabilityIntelligence | Confusion matrix saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\confusion_matrix_xgboost.png
+2026-05-24 14:41:44 | INFO     | StabilityIntelligence | Extracting feature importance for XGBoost...
+2026-05-24 14:41:44 | DEBUG    | StabilityIntelligence |   Extracted feature_importances_ (47 features)
+2026-05-24 14:41:44 | INFO     | StabilityIntelligence |   Top 15 features for XGBoost:
+                  feature  importance
+               Birth_Rate    0.132136
+       Education_Pipeline    0.079995
+           GDP_per_Capita    0.077822
+Population_Pressure_Index    0.052859
+    Healthcare_Access_Gap    0.046264
+           Fertility_Rate    0.039275
+   Dependency_Ratio_Proxy    0.039038
+      Education_Gap_Index    0.034115
+           CO2_per_Capita    0.031731
+           Gasoline_Price    0.023321
+                  Log_GDP    0.023104
+       Fuel_Cost_Pressure    0.023086
+             Abs_Latitude    0.022695
+        Urbanization_Rate    0.021503
+Workforce_Stability_Score    0.020852
+2026-05-24 14:41:44 | INFO     | StabilityIntelligence | Feature importance plot saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\feature_importance_xgboost.png
+2026-05-24 14:41:45 | INFO     | StabilityIntelligence | Model comparison plot saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\model_comparison.png
+2026-05-24 14:41:45 | INFO     | StabilityIntelligence | Best model selected: XGBoost (Macro F1=0.8042, At-Risk Recall=0.9231)
+2026-05-24 14:41:45 | INFO     | StabilityIntelligence | Metrics summary saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\metrics_summary.csv
+2026-05-24 14:41:45 | INFO     | StabilityIntelligence | Model interpretation saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\model_interpretation.txt
+2026-05-24 14:41:45 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:41:45 | INFO     | StabilityIntelligence | EVALUATION PIPELINE COMPLETE
+2026-05-24 14:41:45 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Output directories verified (6 dirs)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   STEP 1/10: LOADING RAW DATASET
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Dataset loaded successfully from: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\data\raw\world-data-2023.csv
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   Shape: 195 rows × 35 columns
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Columns: ['Country', 'Density\n(P/Km2)', 'Abbreviation', 'Agricultural Land( %)', 'Land Area(Km2)', 'Armed Forces size', 'Birth Rate', 'Calling Code', 'Capital/Major City', 'Co2-Emissions', 'CPI', 'CPI Change (%)', 'Currency-Code', 'Fertility Rate', 'Forested Area (%)', 'Gasoline Price', 'GDP', 'Gross primary education enrollment (%)', 'Gross tertiary education enrollment (%)', 'Infant mortality', 'Largest city', 'Life expectancy', 'Maternal mortality ratio', 'Minimum wage', 'Official language', 'Out of pocket health expenditure', 'Physicians per thousand', 'Population', 'Population: Labor force participation (%)', 'Tax revenue (%)', 'Total tax rate', 'Unemployment rate', 'Urban_population', 'Latitude', 'Longitude']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Raw dataset: 195 countries, 35 columns
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   STEP 2/10: CLEANING RAW DATA
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Dropped 6 ID/non-predictive columns: ['Abbreviation', 'Calling Code', 'Capital/Major City', 'Currency-Code', 'Largest city', 'Official language']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Dropped 5 near-empty country rows: ['Palestinian National Authority', 'Vatican City', 'Nauru', 'North Macedonia', 'Eswatini']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Shape after cleanup: (190, 29) (removed 5 rows, 6 columns)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Renamed 28 columns via config map
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Renames applied: {'Density\n(P/Km2)': 'Density_per_km2', 'Agricultural Land( %)': 'Agricultural_Land_pct', 'Land Area(Km2)': 'Land_Area_km2', 'Armed Forces size': 'Armed_Forces', 'Co2-Emissions': 'CO2_Emissions', 'CPI Change (%)': 'CPI_Change_pct', 'Fertility Rate': 'Fertility_Rate', 'Forested Area (%)': 'Forested_Area_pct', 'Gasoline Price': 'Gasoline_Price', 'Gross primary education enrollment (%)': 'Primary_Education_pct', 'Gross tertiary education enrollment (%)': 'Tertiary_Education_pct', 'Infant mortality': 'Infant_Mortality', 'Life expectancy': 'Life_Expectancy', 'Maternal mortality ratio': 'Maternal_Mortality', 'Minimum wage': 'Minimum_Wage', 'Out of pocket health expenditure': 'OOP_Health_Expenditure_pct', 'Physicians per thousand': 'Physicians_per_1000', 'Population: Labor force participation (%)': 'Labor_Participation_pct', 'Tax revenue (%)': 'Tax_Revenue_pct', 'Total tax rate': 'Total_Tax_Rate_pct', 'Unemployment rate': 'Unemployment_Rate_pct', 'Urban_population': 'Urban_Population', 'Birth Rate': 'Birth_Rate', 'GDP': 'GDP', 'CPI': 'CPI', 'Population': 'Population', 'Latitude': 'Latitude', 'Longitude': 'Longitude'}
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Final column names (29): ['Country', 'Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate', 'CO2_Emissions', 'CPI', 'CPI_Change_pct', 'Fertility_Rate', 'Forested_Area_pct', 'Gasoline_Price', 'GDP', 'Primary_Education_pct', 'Tertiary_Education_pct', 'Infant_Mortality', 'Life_Expectancy', 'Maternal_Mortality', 'Minimum_Wage', 'OOP_Health_Expenditure_pct', 'Physicians_per_1000', 'Population', 'Labor_Participation_pct', 'Tax_Revenue_pct', 'Total_Tax_Rate_pct', 'Unemployment_Rate_pct', 'Urban_Population', 'Latitude', 'Longitude']
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Agricultural_Land_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: CPI_Change_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Forested_Area_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Primary_Education_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Tertiary_Education_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: OOP_Health_Expenditure_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Labor_Participation_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Tax_Revenue_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Total_Tax_Rate_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned percentage column: Unemployment_Rate_pct
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned currency column: GDP
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned currency column: Gasoline_Price
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned currency column: Minimum_Wage
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Density_per_km2
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Land_Area_km2
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Armed_Forces
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: CO2_Emissions
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Population
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned comma-numeric column: Urban_Population
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   Cleaned CPI column: CPI
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Converted 20 columns from string → numeric
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Created 4 missingness flags: ['Minimum_Wage_is_missing', 'Tax_Revenue_pct_is_missing', 'Armed_Forces_is_missing', 'Gasoline_Price_is_missing']
+2026-05-24 14:44:12 | WARNING  | StabilityIntelligence | Columns with >10% missing values:
+         column  missing_pct
+   Minimum_Wage        21.05
+Tax_Revenue_pct        11.58
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Overall missing: 193/6270 cells (3.08%)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Cleaned dataset: 190 rows, 33 columns
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Cleaned data saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\data\processed\cleaned_data.csv
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   STEP 3/10: ENGINEERING DOMAIN FEATURES
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | STARTING FEATURE ENGINEERING PIPELINE
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Economic features created (6): ['GDP_per_Capita', 'Log_GDP', 'Log_Population', 'Economic_Stress_Index', 'Inflation_Unemployment_Pressure', 'Tax_Burden_Index']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Healthcare features created (4): ['Healthcare_Stability_Score', 'Mortality_Pressure_Index', 'Physician_Access_Score', 'Healthcare_Access_Gap']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Education/Workforce features created (4): ['Human_Capital_Index', 'Workforce_Stability_Score', 'Education_Pipeline', 'Education_Gap_Index']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Demographic features created (5): ['Urbanization_Rate', 'Population_Pressure_Index', 'Dependency_Ratio_Proxy', 'Military_Burden', 'Abs_Latitude']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Environment features created (5): ['CO2_per_Capita', 'CO2_per_GDP', 'Environmental_Pressure_Index', 'Resource_Land_Balance', 'Fuel_Cost_Pressure']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Total engineered features created: 24
+  ['Abs_Latitude', 'CO2_per_Capita', 'CO2_per_GDP', 'Dependency_Ratio_Proxy', 'Economic_Stress_Index', 'Education_Gap_Index', 'Education_Pipeline', 'Environmental_Pressure_Index', 'Fuel_Cost_Pressure', 'GDP_per_Capita', 'Healthcare_Access_Gap', 'Healthcare_Stability_Score', 'Human_Capital_Index', 'Inflation_Unemployment_Pressure', 'Log_GDP', 'Log_Population', 'Military_Burden', 'Mortality_Pressure_Index', 'Physician_Access_Score', 'Population_Pressure_Index', 'Resource_Land_Balance', 'Tax_Burden_Index', 'Urbanization_Rate', 'Workforce_Stability_Score']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Stability score components:
+  Positive signals (5): ['Life_Expectancy', 'Physicians_per_1000', 'Primary_Education_pct', 'Tertiary_Education_pct', 'GDP_per_Capita']
+  Negative signals (2): ['Infant_Mortality', 'Maternal_Mortality']
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   + Life_Expectancy: mean=72.28, z-range=[-2.60, 1.75]
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   + Physicians_per_1000: mean=1.84, z-range=[-1.09, 3.91]
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   + Primary_Education_pct: mean=102.47, z-range=[-6.01, 3.04]
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   + Tertiary_Education_pct: mean=37.96, z-range=[-1.27, 3.37]
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   + GDP_per_Capita: mean=15821.67, z-range=[-0.61, 6.63]
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   - Infant_Mortality: mean=21.33, z-range=[-1.02, 3.23]
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence |   - Maternal_Mortality: mean=160.39, z-range=[-0.68, 4.24]
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Stability score created: min=-5.034, max=5.673, mean=0.010
+2026-05-24 14:44:12 | WARNING  | StabilityIntelligence | Dropping 1 rows with NaN stability_score before creating target labels.
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Target column 'stability_label' created:
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   Class 0 (Stable): 63 countries (33.3%)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   Class 1 (Watch): 63 countries (33.3%)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   Class 2 (At-Risk): 63 countries (33.3%)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Target column 'stability_label' is ready.
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Final DataFrame shape: (189, 59)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | FEATURE ENGINEERING PIPELINE COMPLETE
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Featured dataset: 189 rows, 59 columns
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Featured data saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\data\processed\feature_engineered_data.csv
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   STEP 4/10: VERIFYING TARGET COLUMN
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Target column 'stability_label' distribution:
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   0 (Stable): 63 countries (33.3%)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   1 (Watch): 63 countries (33.3%)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   2 (At-Risk): 63 countries (33.3%)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   STEP 5/10: REMOVING LEAKAGE COLUMNS
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence | Leaky columns (to exclude from features): ['Life_Expectancy', 'Physicians_per_1000', 'Primary_Education_pct', 'Tertiary_Education_pct', 'Infant_Mortality', 'Maternal_Mortality', 'stability_score', 'Healthcare_Stability_Score', 'Mortality_Pressure_Index', 'Physician_Access_Score']
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Dropped 11 leaky/non-feature columns:
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Life_Expectancy
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Physicians_per_1000
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Primary_Education_pct
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Tertiary_Education_pct
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Infant_Mortality
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Maternal_Mortality
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - stability_score
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Healthcare_Stability_Score
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Mortality_Pressure_Index
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Physician_Access_Score
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   - Country
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Model-ready dataset: (189, 48)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Model-ready data saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\data\processed\final_model_ready.csv
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   STEP 6/10: SPLITTING TRAIN / TEST
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Stratified split enabled (target has 3 classes)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Train/Test split completed:
+  X_train: (151, 47)  |  y_train: (151,)
+  X_test : (38, 47)   |  y_test : (38,)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   Train class distribution: {0: 0.338, 1: 0.331, 2: 0.331}
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   Test  class distribution: {2: 0.342, 1: 0.342, 0: 0.316}
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Train: (151, 47) | Test: (38, 47)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   STEP 7/10: IDENTIFYING FEATURE TYPES
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Numerical features  : 47
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Categorical features: 0
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   STEP 8/10: TRAINING ALL MODELS
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | FULL TRAINING PIPELINE
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Preprocessing pipeline built (UNFITTED):
+  Numerical features  (47): ['Density_per_km2', 'Agricultural_Land_pct', 'Land_Area_km2', 'Armed_Forces', 'Birth_Rate']...
+  Categorical features (0): []
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | STARTING MODEL TRAINING
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Training set: 151 samples, 47 features
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Initialized LogisticRegression (interpretable baseline)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Initialized RandomForestClassifier (nonlinear benchmark)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Initialized XGBClassifier (primary production model)
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Total models initialized: 3 -> ['LogisticRegression', 'RandomForest', 'XGBoost']
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence | Built pipeline: preprocessor -> LogisticRegression
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Training LogisticRegression...
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   LogisticRegression trained successfully in 0.02s
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence | Built pipeline: preprocessor -> RandomForestClassifier
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Training RandomForest...
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence |   RandomForest trained successfully in 0.50s
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence | Built pipeline: preprocessor -> XGBClassifier
+2026-05-24 14:44:12 | INFO     | StabilityIntelligence | Training XGBoost...
+2026-05-24 14:44:12 | DEBUG    | StabilityIntelligence | Sample weights computed: min=0.987, max=1.007, shape=(151,)
+2026-05-24 14:44:14 | INFO     | StabilityIntelligence |   XGBoost trained successfully in 1.68s
+2026-05-24 14:44:14 | INFO     | StabilityIntelligence | Training complete: 3/3 models trained successfully
+2026-05-24 14:44:14 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:14 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:14 | INFO     | StabilityIntelligence | CROSS-VALIDATION FOR ALL MODELS
+2026-05-24 14:44:14 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:14 | INFO     | StabilityIntelligence | Cross-validating LogisticRegression with 5-fold stratified CV...
+2026-05-24 14:44:18 | INFO     | StabilityIntelligence |   LogisticRegression CV Results (5-fold):
+2026-05-24 14:44:18 | INFO     | StabilityIntelligence |     accuracy            : 0.7882 (+/- 0.0577)
+2026-05-24 14:44:18 | INFO     | StabilityIntelligence |     f1_macro            : 0.7889 (+/- 0.0559)
+2026-05-24 14:44:18 | INFO     | StabilityIntelligence |     f1_weighted         : 0.7893 (+/- 0.0557)
+2026-05-24 14:44:18 | INFO     | StabilityIntelligence |     recall_macro        : 0.7873 (+/- 0.0579)
+2026-05-24 14:44:18 | INFO     | StabilityIntelligence | Cross-validating RandomForest with 5-fold stratified CV...
+2026-05-24 14:44:21 | INFO     | StabilityIntelligence |   RandomForest CV Results (5-fold):
+2026-05-24 14:44:21 | INFO     | StabilityIntelligence |     accuracy            : 0.8015 (+/- 0.0462)
+2026-05-24 14:44:21 | INFO     | StabilityIntelligence |     f1_macro            : 0.8036 (+/- 0.0462)
+2026-05-24 14:44:21 | INFO     | StabilityIntelligence |     f1_weighted         : 0.8045 (+/- 0.0456)
+2026-05-24 14:44:21 | INFO     | StabilityIntelligence |     recall_macro        : 0.8006 (+/- 0.0467)
+2026-05-24 14:44:21 | INFO     | StabilityIntelligence | Cross-validating XGBoost with 5-fold stratified CV...
+2026-05-24 14:44:21 | DEBUG    | StabilityIntelligence | Sample weights computed: min=0.987, max=1.007, shape=(151,)
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |   XGBoost CV Results (5-fold):
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     accuracy            : 0.8080 (+/- 0.0441)
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     f1_macro            : 0.8086 (+/- 0.0420)
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     f1_weighted         : 0.8093 (+/- 0.0419)
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     recall_macro        : 0.8073 (+/- 0.0441)
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Model comparison table:
+             model  accuracy_mean  accuracy_std  f1_macro_mean  f1_macro_std  f1_weighted_mean  f1_weighted_std  recall_macro_mean  recall_macro_std
+           XGBoost       0.807957      0.044102       0.808587      0.041985          0.809260         0.041944           0.807273          0.044147
+      RandomForest       0.801505      0.046162       0.803591      0.046214          0.804487         0.045597           0.800606          0.046726
+LogisticRegression       0.788172      0.057677       0.788938      0.055867          0.789344         0.055738           0.787273          0.057922
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Best model selected: XGBoost (Macro F1 = 0.8086 +/- 0.0420)
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Model 'XGBoost' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\best_model.joblib
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Model 'LogisticRegression' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\logisticregression_pipeline.joblib
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Model 'RandomForest' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\randomforest_pipeline.joblib
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Model 'XGBoost' saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\xgboost_pipeline.joblib
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Feature list (47 features) saved to: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\feature_list.joblib
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Full training pipeline completed in 14.76s
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Models trained: ['LogisticRegression', 'RandomForest', 'XGBoost']
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Best model (CV): XGBoost
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |   STEP 9/10: EVALUATING ON HELD-OUT TEST SET
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | STARTING FULL EVALUATION PIPELINE
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | EVALUATING ALL MODELS ON TEST SET
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Evaluating LogisticRegression on test set (38 samples)...
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |   LogisticRegression Test Results:
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     accuracy            : 0.7895
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     macro_precision     : 0.7878
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     macro_recall        : 0.7927
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     macro_f1            : 0.7799
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     weighted_f1         : 0.7781
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     at_risk_recall      : 0.9231
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Evaluating RandomForest on test set (38 samples)...
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |   RandomForest Test Results:
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     accuracy            : 0.7895
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     macro_precision     : 0.7878
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     macro_recall        : 0.7927
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     macro_f1            : 0.7799
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     weighted_f1         : 0.7781
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     at_risk_recall      : 0.9231
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Evaluating XGBoost on test set (38 samples)...
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |   XGBoost Test Results:
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     accuracy            : 0.8158
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     macro_precision     : 0.8250
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     macro_recall        : 0.8205
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     macro_f1            : 0.8042
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     weighted_f1         : 0.8020
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |     at_risk_recall      : 0.9231
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | 
+Model Comparison:
+             model  accuracy  macro_precision  macro_recall  macro_f1  weighted_f1  at_risk_recall
+           XGBoost  0.815789         0.825000      0.820513  0.804233     0.802005        0.923077
+LogisticRegression  0.789474         0.787831      0.792735  0.779887     0.778143        0.923077
+      RandomForest  0.789474         0.787831      0.792735  0.779887     0.778143        0.923077
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Classification report saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\classification_report_logisticregression.txt
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Confusion matrix saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\confusion_matrix_logisticregression.png
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence | Extracting feature importance for LogisticRegression...
+2026-05-24 14:44:27 | DEBUG    | StabilityIntelligence |   Extracted coef_ (47 features)
+2026-05-24 14:44:27 | INFO     | StabilityIntelligence |   Top 15 features for LogisticRegression:
+                  feature  importance
+       Education_Pipeline    0.702043
+      Human_Capital_Index    0.598316
+      Education_Gap_Index    0.544460
+        Forested_Area_pct    0.513684
+           GDP_per_Capita    0.451266
+    Agricultural_Land_pct    0.448673
+            CO2_Emissions    0.428430
+          Density_per_km2    0.424805
+          Tax_Revenue_pct    0.422163
+  Labor_Participation_pct    0.415852
+    Healthcare_Access_Gap    0.409375
+Gasoline_Price_is_missing    0.388228
+       Total_Tax_Rate_pct    0.368251
+    Resource_Land_Balance    0.346813
+  Armed_Forces_is_missing    0.342332
+2026-05-24 14:44:28 | INFO     | StabilityIntelligence | Feature importance plot saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\feature_importance_logisticregression.png
+2026-05-24 14:44:28 | INFO     | StabilityIntelligence | Classification report saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\classification_report_randomforest.txt
+2026-05-24 14:44:29 | INFO     | StabilityIntelligence | Confusion matrix saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\confusion_matrix_randomforest.png
+2026-05-24 14:44:29 | INFO     | StabilityIntelligence | Extracting feature importance for RandomForest...
+2026-05-24 14:44:29 | DEBUG    | StabilityIntelligence |   Extracted feature_importances_ (47 features)
+2026-05-24 14:44:29 | INFO     | StabilityIntelligence |   Top 15 features for RandomForest:
+                  feature  importance
+       Education_Pipeline    0.125628
+               Birth_Rate    0.105705
+Population_Pressure_Index    0.083606
+           GDP_per_Capita    0.081204
+           CO2_per_Capita    0.071137
+           Fertility_Rate    0.068031
+    Healthcare_Access_Gap    0.065740
+   Dependency_Ratio_Proxy    0.052137
+      Education_Gap_Index    0.048074
+Workforce_Stability_Score    0.031399
+                 Latitude    0.025931
+             Abs_Latitude    0.022197
+             Minimum_Wage    0.018916
+        Urbanization_Rate    0.016797
+      Human_Capital_Index    0.014943
+2026-05-24 14:44:29 | INFO     | StabilityIntelligence | Feature importance plot saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\feature_importance_randomforest.png
+2026-05-24 14:44:29 | INFO     | StabilityIntelligence | Classification report saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\classification_report_xgboost.txt
+2026-05-24 14:44:30 | INFO     | StabilityIntelligence | Confusion matrix saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\confusion_matrix_xgboost.png
+2026-05-24 14:44:30 | INFO     | StabilityIntelligence | Extracting feature importance for XGBoost...
+2026-05-24 14:44:30 | DEBUG    | StabilityIntelligence |   Extracted feature_importances_ (47 features)
+2026-05-24 14:44:30 | INFO     | StabilityIntelligence |   Top 15 features for XGBoost:
+                  feature  importance
+               Birth_Rate    0.132136
+       Education_Pipeline    0.079995
+           GDP_per_Capita    0.077822
+Population_Pressure_Index    0.052859
+    Healthcare_Access_Gap    0.046264
+           Fertility_Rate    0.039275
+   Dependency_Ratio_Proxy    0.039038
+      Education_Gap_Index    0.034115
+           CO2_per_Capita    0.031731
+           Gasoline_Price    0.023321
+                  Log_GDP    0.023104
+       Fuel_Cost_Pressure    0.023086
+             Abs_Latitude    0.022695
+        Urbanization_Rate    0.021503
+Workforce_Stability_Score    0.020852
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | Feature importance plot saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\feature_importance_xgboost.png
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | Model comparison plot saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures\model_comparison.png
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | Best model selected: XGBoost (Macro F1=0.8042, At-Risk Recall=0.9231)
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | Metrics summary saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\metrics_summary.csv
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | Model interpretation saved: C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\model_interpretation.txt
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | EVALUATION PIPELINE COMPLETE
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | ============================================================
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | Best model (test): XGBoost
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   STEP 10/10: PIPELINE COMPLETE
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | =================================================================
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | 
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   Pipeline completed in 19.65 seconds
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   Dataset        : 195 countries -> 189 (after cleaning)
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   Features       : 47 numerical + 0 categorical
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   Models trained : 3
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   Best model     : XGBoost
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   Macro F1       : 0.8042
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   At-Risk Recall : 0.9231
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   Accuracy       : 0.8158
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | 
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |   Saved artifacts:
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |     Best model     : C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\best_model.joblib
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |     Feature list   : C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\models\feature_list.joblib
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |     Metrics CSV    : C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\metrics_summary.csv
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |     Interpretation : C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\metrics\model_interpretation.txt
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence |     Figures        : C:\Users\anumo\OneDrive\Desktop\Antigravity\Geopolitics_prediction\reports\figures
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | 
+2026-05-24 14:44:31 | INFO     | StabilityIntelligence | =================================================================

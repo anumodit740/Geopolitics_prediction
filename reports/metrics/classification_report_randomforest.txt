@@ -1,0 +1,19 @@
+Classification Report: RandomForest
+=======================================================
+Project: Global Country Stability Intelligence System
+Test samples: 38
+=======================================================
+
+              precision    recall  f1-score   support
+
+      Stable       0.79      0.92      0.85        12
+       Watch       0.78      0.54      0.64        13
+     At-Risk       0.80      0.92      0.86        13
+
+    accuracy                           0.79        38
+   macro avg       0.79      0.79      0.78        38
+weighted avg       0.79      0.79      0.78        38
+
+
+Note: 'Stable' = low risk, 'At-Risk' = high risk.
+Macro F1 is the primary evaluation metric.

@@ -1,0 +1,59 @@
+=================================================================
+MODEL EVALUATION INTERPRETATION
+Global Country Stability Intelligence System
+=================================================================
+
+BEST MODEL SELECTED
+----------------------------------------
+  Model       : XGBoost
+  Macro F1    : 0.8042
+  Accuracy    : 0.8158
+  At-Risk Recall: 0.9231
+  Macro Precision: 0.8250
+
+WHY THIS MODEL?
+----------------------------------------
+  XGBoost achieved the highest Macro F1 score (0.8042)
+  among 3 evaluated models.
+
+  The gap between XGBoost (0.8042) and the weakest
+  model RandomForest (0.7799) is 0.0243.
+
+WHY MACRO F1 MATTERS
+----------------------------------------
+  Macro F1 is the unweighted average F1 across ALL risk classes.
+  Unlike accuracy, it ensures the model doesn't just predict the
+  majority class well while ignoring minority classes.
+
+  For a 3-class problem (Stable / Watch / At-Risk), Macro F1
+  penalizes a model equally for poor performance on ANY class.
+
+WHY AT-RISK RECALL MATTERS
+----------------------------------------
+  The At-Risk recall is 0.9231, meaning the model
+  correctly identifies 92.3% of countries that
+  are genuinely at risk of instability.
+
+  Missing an at-risk country (false negative) is far more costly
+  than a false alarm:
+    - Investors could lose capital in an unstable market
+    - Aid organizations could miss the countries that need help most
+    - Insurance companies could underprice sovereign risk
+
+PRECISION vs RECALL TRADEOFF
+----------------------------------------
+  Macro Precision: 0.8250 (of predicted at-risk, how many truly are)
+  Macro Recall   : 0.8205 (of truly at-risk, how many we caught)
+
+  In this application, RECALL is more important than precision.
+  A false alarm (predicting Watch instead of Stable) causes
+  extra caution.  A missed risk (predicting Stable instead of
+  At-Risk) causes real damage.
+
+RECOMMENDATION
+----------------------------------------
+  Deploy XGBoost as the production model.
+  Monitor At-Risk recall as the primary business KPI.
+  Retrain quarterly as new country data becomes available.
+
+=================================================================
